@@ -15,6 +15,7 @@
 #include "consoleFunctions.h"
 #include "adcFunctions.h"
 #include "LCDFunctions.h"
+#include "lcdApplication.h"
 #include "DelayFunctions.h"
 
 
@@ -32,6 +33,10 @@ int main (void)
 	pmc_enable_periph_clk(ID_TRNG);
 	
 	trng_enable(&myTrng);
+	
+	lcdClearDisplay();
+	lcdWrite(1,1);
+	delayMicroseconds(5000);
 	
 	/*Init IO-pins*/
 	

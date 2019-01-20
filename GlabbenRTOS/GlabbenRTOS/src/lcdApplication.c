@@ -35,7 +35,7 @@ int lcdWriteAsciiString(const char *string)
 	{
 		if (*(string + index) == NULL)
 		{
-			lcdWrite(" ");
+			return 0;
 		}
 		lcdWrite(*(string + index), 1);
 	}

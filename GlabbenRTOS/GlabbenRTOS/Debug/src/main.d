@@ -162,7 +162,8 @@ src/main.d src/main.o: ../src/main.c ../src/asf.h \
  ../src/Task_player1.h ../src/Task_player2.h ../src/Setup_tasks.h \
  ../src/consoleFunctions.h ../src/adcFunctions.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\inttypes.h \
- ../src/LCDFunctions.h ../src/DelayFunctions.h
+ ../src/LCDFunctions.h ../src/lcdApplication.h ../src/buttons.h \
+ ../src/DelayFunctions.h
 
 ../src/asf.h:
 
@@ -515,5 +516,9 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-no
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\inttypes.h:
 
 ../src/LCDFunctions.h:
+
+../src/lcdApplication.h:
+
+../src/buttons.h:
 
 ../src/DelayFunctions.h:

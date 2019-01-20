@@ -159,7 +159,8 @@ src/Task_player1.d src/Task_player1.o: ../src/Task_player1.c ../src/asf.h \
  ../src/config/conf_uart_serial.h ../src/ASF/sam/drivers/tc/tc.h \
  ../src/ASF/sam/drivers/trng/trng.h \
  ../src/ASF/sam/drivers/pio/pio_handler.h ../src/Task_player1.h \
- ../src/Setup_tasks.h ../src/Task_game.h ../src/asf.h
+ ../src/Setup_tasks.h ../src/Task_game.h ../src/asf.h \
+ ../src/lcdApplication.h ../src/buttons.h ../src/LCDFunctions.h
 
 ../src/asf.h:
 
@@ -502,3 +503,9 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-no
 ../src/Task_game.h:
 
 ../src/asf.h:
+
+../src/lcdApplication.h:
+
+../src/buttons.h:
+
+../src/LCDFunctions.h:
