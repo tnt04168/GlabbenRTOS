@@ -27,6 +27,8 @@ void task_game(void *pvParameters){
 		vSemaphoreCreateBinary(button2);
 		
 		int game_started = 0;
+		int button1_started = 0;
+		int button2_started = 0;
 	
 	while (1)
 	{
@@ -37,8 +39,9 @@ void task_game(void *pvParameters){
 		{	
 			if (!game_started)
 			{
+				
 				game_started = 1;
-			
+				
 				lcdClearDisplay();
 			
 				ioport_set_pin_level(LED_OUTPUT, LOW);
@@ -54,25 +57,30 @@ void task_game(void *pvParameters){
 				delayMicroseconds(randomTime);
 			
 				ioport_set_pin_level(LED_OUTPUT, HIGH);
+				
+				tc_start(TC0,0);
 			}
+			
 		}
 		
-		if(ioport_get_pin_level(BUTTON_INPUT_01) && game_started)				//
+		
+		if(ioport_get_pin_level(BUTTON_INPUT_01) && game_started && !button1_started)				//
 		{
-
-			xSemaphoreGiveFromISR(button1,NULL);
-			vTaskDelay(5);
+			//button1_started = 1;
+			xSemaphoreGive(button1);
+			vTaskDelay(100);
 
 		}
 		
-		if(ioport_get_pin_level(BUTTON_INPUT_02) && game_started)				//
+		if(ioport_get_pin_level(BUTTON_INPUT_02) && game_started && !button2_started)				//
 		{
-
-			xSemaphoreGiveFromISR(button2,NULL);
-			vTaskDelay(5);
+			//button2_started = 1;
+			xSemaphoreGive(button2);
+			vTaskDelay(100);
 
 			
 		}
+	
 	}
 	
 }

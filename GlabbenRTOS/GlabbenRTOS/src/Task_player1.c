@@ -14,14 +14,21 @@
 
 
 void task_player1(void *pvParameters) {
-
+	
+	uint32_t time_passed1 = 0;
 	
 	while(1) {
-		if (xSemaphoreTake(button1,100))
+		if (xSemaphoreTake(button1,portMAX_DELAY))
 		{
-			lcdClearDisplay();
-			lcdWrite(1,1);
-			printf("player1 semaphore ok \n");
+			
+			//lcdClearDisplay();
+			//lcdWrite(1,1);
+			time_passed1 = tc_read_cv(TC0,0);
+			
+			
+			vTaskDelay(2000);
+			
+			printf("Time 1: %lu \n", time_passed1);
 		}
 		
 		
