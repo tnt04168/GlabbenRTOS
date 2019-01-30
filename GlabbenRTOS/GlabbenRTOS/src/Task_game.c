@@ -17,6 +17,9 @@
 xSemaphoreHandle button1 = NULL;
 xSemaphoreHandle button2 = NULL;
 
+int button1_test = 0;
+int button2_test = 0;
+
 
 void task_game(void *pvParameters){
 	
@@ -26,6 +29,8 @@ void task_game(void *pvParameters){
 		vSemaphoreCreateBinary(button1);
 		vSemaphoreCreateBinary(button2);
 		
+		
+		int timer_time = 0;
 		int game_started = 0;
 		int button1_started = 0;
 		int button2_started = 0;
@@ -41,33 +46,46 @@ void task_game(void *pvParameters){
 			{
 				
 				game_started = 1;
-				
+					
 				lcdClearDisplay();
-			
+					
 				ioport_set_pin_level(LED_OUTPUT, LOW);
-			
-				//Show game start on display
-			
-				//Randomized time
-				uint32_t randomTime = trng_read_output_data(&myTrng)%5000000 + 2000000;		// microseconds
-				printf("%lu\n", randomTime);
-			
-			
-				//Start timer
-				delayMicroseconds(randomTime);
-			
+					
+					//Show game start on display
+				printf("Game start \n");
+					
+					//Randomized time
+					//uint32_t randomTime = trng_read_output_data(&myTrng)%5000000 + 2000000;		// microseconds
+// 					uint32_t randomTime = 2000000;		// microseconds
+// 					printf("%lu\n", randomTime);
+					
+				uint32_t count = (trng_read_output_data(TRNG) % 5000000) + 2000000;
+				printf("Time in loop: %lu \n",count);
+					
+					//Start timer
+					//delayMicroseconds(randomTime);
+					
+				delayMicroseconds(timer_time);
+					
 				ioport_set_pin_level(LED_OUTPUT, HIGH);
+					
 				
-				tc_start(TC0,0);
+				
 			}
 			
 		}
 		
 		
+		
+		
 		if(ioport_get_pin_level(BUTTON_INPUT_01) && game_started && !button1_started)				//
 		{
 			//button1_started = 1;
-			xSemaphoreGive(button1);
+			if (xSemaphoreGive(button1) == pdTRUE)
+			{
+				button1_test = 1;
+				printf("Sem1 given \n");
+			}
 			vTaskDelay(100);
 
 		}
@@ -75,11 +93,34 @@ void task_game(void *pvParameters){
 		if(ioport_get_pin_level(BUTTON_INPUT_02) && game_started && !button2_started)				//
 		{
 			//button2_started = 1;
-			xSemaphoreGive(button2);
+			if (xSemaphoreGive(button2) == pdTRUE)
+			{
+				button2_test = 1;
+				printf("Sem2 given \n");
+			}
 			vTaskDelay(100);
 
 			
 		}
+		
+// 		uint32_t button_register = PIOC->PIO_PDSR;
+// 		if ((button_register & (1<<8)) && (button_register & (1<<17)))
+// 		{
+// 			printf("Both buttons!\n");
+// 			continue;
+// 		}
+// 		if (button_register & (1<<8))
+// 		{
+// 			
+// 			xSemaphoreGive(button1);
+// 			continue;
+// 		}
+// 		if (button_register & (1<<17))
+// 		{
+// 			
+// 			xSemaphoreGive(button2);
+// 			continue;
+// 		}
 	
 	}
 	

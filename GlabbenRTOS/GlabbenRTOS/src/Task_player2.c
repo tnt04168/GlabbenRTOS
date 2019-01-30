@@ -19,17 +19,25 @@ void task_player2(void *pvParameters) {
 	uint32_t time_passed2 = 0;
 	
 	while(1) {
-		if (xSemaphoreTake(button2,portMAX_DELAY))
+		if (xSemaphoreTake(button2,portMAX_DELAY) && button1_test)
 		{
 			//lcdClearDisplay();
 			//printf("player2 semaphore ok \n");
 			//vTaskDelay(100);
-			time_passed2 = tc_read_cv(TC0,0);
+// 			time_passed2 = tc_read_cv(TC0,0);
+// 			
+// 			vTaskDelay(2000);
+// 			
+// 			printf("Time 2: %lu \n", time_passed2);
 			
-			vTaskDelay(2000);
+			printf("Only button 2\n");
+			/*fflush(stdout);*/
 			
-			printf("Time 2: %lu \n", time_passed2);
-
+			vTaskDelay(1000);
+			
+			button2_test = 1;
+			
+			
 		}
 		
 		

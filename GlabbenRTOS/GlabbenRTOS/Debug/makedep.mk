@@ -16,6 +16,8 @@ src\ASF\sam\drivers\usart\usart.c
 
 src\ASF\thirdparty\freertos\freertos-7.3.0\source\FreeRTOS_CLI.c
 
+src\ASF\thirdparty\wireless\addons\sio2host\uart\sio2host.c
+
 src\buttons.c
 
 src\ConsoleFunctions.c

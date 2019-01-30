@@ -21,21 +21,28 @@
 
 int main (void)
 {
+	
+	PIOC->PIO_PUDR  |= PIO_PC18 | PIO_PC16; /* Set pull-up for both buttons */
+	PIOC->PIO_IFER  |= PIO_PC18 | PIO_PC16; /* Enable switch debounce filter for both buttons */
+	PIOC->PIO_DIFSR |= PIO_PC18 | PIO_PC16;
+	
 	/* Init board */
 	
-	sysclk_init();
+	
 	board_init();
+	sysclk_init();
 	
 	configureConsole();
 	delayInit();
 	analogInit(0);
 	lcdInit();
 	pmc_enable_periph_clk(ID_TRNG);
+	/*tc_init(TC0, 0, 0);*/
 	
-	trng_enable(&myTrng);
+	trng_enable(TRNG);
 	
 	lcdClearDisplay();
-	lcdWrite(1,1);
+	//lcdWrite(0x31,1);
 	delayMicroseconds(5000);
 	
 	/*Init IO-pins*/

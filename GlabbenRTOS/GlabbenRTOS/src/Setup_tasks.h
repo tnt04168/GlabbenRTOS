@@ -22,7 +22,7 @@
 #define TASK_PLAYER2_STACK_SIZE (2048/ sizeof(portSTACK_TYPE))
 #define TASK_PLAYER2_PRIORITY (1)
 
-#define BUTTON_INPUT_02 PIO_PC9_IDX		//Pin 41
+#define BUTTON_INPUT_02 PIO_PC17_IDX		//Pin 46
 
 
 /* Setup Game task */

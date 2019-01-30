@@ -14,8 +14,9 @@
 extern xSemaphoreHandle button1;
 extern xSemaphoreHandle button2;
 
+extern int button1_test;
+extern int button2_test;
 
-Trng myTrng;
 
 void task_game(void *pvParameters);
 
