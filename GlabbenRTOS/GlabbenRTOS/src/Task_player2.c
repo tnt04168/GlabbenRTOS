@@ -15,31 +15,22 @@
 
 
 void task_player2(void *pvParameters) {
-	
-	uint32_t time_passed2 = 0;
+
 	
 	while(1) {
-		if (xSemaphoreTake(button2,portMAX_DELAY) && button1_test)
+		if (ioport_get_pin_level(BUTTON_INPUT_02))
 		{
-			//lcdClearDisplay();
-			//printf("player2 semaphore ok \n");
-			//vTaskDelay(100);
-// 			time_passed2 = tc_read_cv(TC0,0);
-// 			
-// 			vTaskDelay(2000);
-// 			
-// 			printf("Time 2: %lu \n", time_passed2);
-			
-			printf("Only button 2\n");
+			xSemaphoreGive(button2);
+			//printf("Button 2 pressed\n");
 			/*fflush(stdout);*/
 			
-			vTaskDelay(1000);
+			vTaskDelay(2000);
 			
-			button2_test = 1;
+			
 			
 			
 		}
-		
+		vTaskDelay(1);
 		
 	}
 	
