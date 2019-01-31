@@ -1,7 +1,8 @@
 /**
  * \file
  *
- * \brief Empty user application template
+ * Created: 2019-01-19
+ * Author: André Ahlbertz & Sebastian Hoggard
  *
  */
 
@@ -22,9 +23,7 @@
 int main (void)
 {
 	
-	PIOC->PIO_PUDR  |= PIO_PC18 | PIO_PC16; /* Set pull-up for both buttons */
-	PIOC->PIO_IFER  |= PIO_PC18 | PIO_PC16; /* Enable switch debounce filter for both buttons */
-	PIOC->PIO_DIFSR |= PIO_PC18 | PIO_PC16;
+
 	
 	/* Init board */
 	
@@ -37,13 +36,10 @@ int main (void)
 	analogInit(0);
 	lcdInit();
 	pmc_enable_periph_clk(ID_TRNG);
-	/*tc_init(TC0, 0, 0);*/
 	
 	trng_enable(TRNG);
 	
 	lcdClearDisplay();
-	//lcdWrite(0x31,1);
-	delayMicroseconds(5000);
 	
 	/*Init IO-pins*/
 	
@@ -51,6 +47,9 @@ int main (void)
 	ioport_set_pin_dir(BUTTON_INPUT_02, IOPORT_DIR_INPUT);
 	ioport_set_pin_dir(LED_OUTPUT, IOPORT_DIR_OUTPUT);
 	ioport_set_pin_level(LED_OUTPUT, LOW);
+	
+	ioport_set_pin_dir(PIO_PD0_IDX, IOPORT_DIR_OUTPUT);
+	ioport_set_pin_level(PIO_PD0_IDX, HIGH);
 
 	/* Create tasks */
 	

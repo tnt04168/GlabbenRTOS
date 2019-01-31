@@ -2,7 +2,7 @@
  * Setup_tasks.h
  *
  * Created: 2019-01-20 07:35:56
- *  Author: André Ahlbertz
+ *  Author: André Ahlbertz & Sebastian Hoggard
  */ 
 #include <ioport.h>
 

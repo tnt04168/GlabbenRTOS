@@ -2,7 +2,7 @@
  * Task_game.h
  *
  * Created: 2019-01-19 23:27:31
- *  Author: André Ahlbertz
+ *  Author: André Ahlbertz & Sebastian Hoggard
  */ 
 
 

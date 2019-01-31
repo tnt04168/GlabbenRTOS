@@ -2,7 +2,7 @@
  * Task_game.c
  *
  * Created: 2019-01-19 23:26:18
- *  Author: André Ahlbertz
+ *  Author: André Ahlbertz & Sebastian Hoggard
  */ 
 #include <asf.h>
 

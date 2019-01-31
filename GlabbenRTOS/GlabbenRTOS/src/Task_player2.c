@@ -2,7 +2,7 @@
  * Task_player2.c
  *
  * Created: 2019-01-19 23:25:47
- *  Author: André Ahlbertz
+ *  Author: André Ahlbertz & Sebastian Hoggard
  */ 
 #include <asf.h>
 
