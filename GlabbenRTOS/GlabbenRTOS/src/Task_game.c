@@ -56,9 +56,10 @@ void task_game(void *pvParameters){
 		while (!game_started && !ioport_get_pin_level(BUTTON_INPUT_01) && !ioport_get_pin_level(BUTTON_INPUT_02))
 		{
 // 			lcdClearDisplay();
-// 			lcdWriteAsciiString("Press start");
+ 			
 			if (!temp)
 			{
+				lcdWriteAsciiString("Press start");
 				printf("Press start \n");
 				temp = 1;
 			}

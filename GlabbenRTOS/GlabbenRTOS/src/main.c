@@ -30,13 +30,13 @@ int main (void)
 	
 	board_init();
 	sysclk_init();
-	
+	ioport_init();
+	analogInit(0);
 	configureConsole();
 	delayInit();
-	analogInit(0);
 	lcdInit();
-	pmc_enable_periph_clk(ID_TRNG);
 	
+	pmc_enable_periph_clk(ID_TRNG);
 	trng_enable(TRNG);
 	
 	lcdClearDisplay();

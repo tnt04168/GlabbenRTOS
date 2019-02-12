@@ -59,6 +59,13 @@
 #include <compiler.h>
 #include <status_codes.h>
 
+// From module: FreeRTOS - PDC Interface Layer
+#include <freertos_peripheral_control.h>
+#include <freertos_peripheral_control_private.h>
+
+// From module: FreeRTOS - UART Interface Layer
+#include <freertos_uart_serial.h>
+
 // From module: FreeRTOS mini Real-Time Kernel
 #include <FreeRTOS.h>
 #include <FreeRTOS_CLI.h>
@@ -84,6 +91,9 @@
 
 // From module: Interrupt management - SAM implementation
 #include <interrupt.h>
+
+// From module: PDC - Peripheral DMA Controller Example
+#include <pdc.h>
 
 // From module: PIO - Parallel Input/Output Controller
 #include <pio.h>

@@ -4,9 +4,15 @@
 
 src\adcFunctions.c
 
+src\ASF\common\services\freertos\sam\freertos_peripheral_control.c
+
+src\ASF\common\services\freertos\sam\freertos_uart_serial.c
+
 src\ASF\common\utils\stdio\read.c
 
 src\ASF\sam\drivers\adc\adc.c
+
+src\ASF\sam\drivers\pdc\pdc.c
 
 src\ASF\sam\drivers\trng\trng.c
 
